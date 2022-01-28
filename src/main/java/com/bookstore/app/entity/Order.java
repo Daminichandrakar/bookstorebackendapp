@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.bookstore.app.dto.OrderDto;
@@ -42,7 +43,7 @@ public class Order {
     private int OrderId;
     private int totalPrice;
     
-    @CreatedDate
+    @CreationTimestamp
     @Temporal(TemporalType.DATE)
 	private Date registerDate;
     

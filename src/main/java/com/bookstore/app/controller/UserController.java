@@ -36,17 +36,13 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
-		
-	
-//	@CrossOrigin(origins="http://localhost:4200")
+
 	@PostMapping(path="/signup")
 	public ResponseEntity<ResponseDto> post(@Valid @RequestBody UserDto userregisterdto) {
 		ResponseDto userRegisterResponceDto = new ResponseDto("Added successfully!", userService.add(userregisterdto));
 		return new ResponseEntity<ResponseDto>(userRegisterResponceDto , HttpStatus.OK);
 	}
-	
-	
-	
+
 	@GetMapping("/")
 	public ResponseEntity<ResponseDto> getAllEmployeeData() {
 		List<UserEntity> List = userService.getall();
@@ -59,8 +55,7 @@ public class UserController {
 		ResponseDto userRegisterResponceDto = new ResponseDto("NewPassWord:", userService.newPassword(newPassword.getToken(), newPassword.getNewPassword()));
 		return new ResponseEntity<ResponseDto>(userRegisterResponceDto, HttpStatus.OK);
 	}
-	
-	
+
 	@GetMapping("/id/{token}")
 	public ResponseEntity<ResponseDto> getUser(@PathVariable String token ) {
 		ResponseDto userRegisterResponceDto = new ResponseDto("All the Users!", userService.getUserbyToken(token));

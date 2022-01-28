@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.bookstore.app.dto.UserDto;
@@ -35,18 +36,18 @@ public class UserEntity {
 	private String emailId;
 	private String password;
 	private Long phoneNumber;
-	private String role;
+//	private String role;
 	
-	@CreatedDate
+//	@CreatedDate
+	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
 	private Date registerDate;
-	
+
+	@CreationTimestamp
 	@JsonFormat(pattern="dd MM yyyy")
 	private LocalDate updatedDate;
 	
-	private boolean status;
-	
-	
+//	private boolean status;
 	public UserEntity(int id, UserDto userbookdto) {
 		super();
 		this.id = id;

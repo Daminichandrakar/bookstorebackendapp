@@ -32,7 +32,7 @@ public class BookEntity {
 	private String img;
 	private int quantity;
 	
-	@Column(length = 1000)
+	@Column(length = 15000)
 	private String description;
 
 	public BookEntity(BookDto bookDto){

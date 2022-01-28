@@ -50,19 +50,17 @@ public class BookService {
 	public String  loadCSV(){
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new
-					FileReader("src/main/resources/books.csv"));
+					FileReader("src/main/resources/books_data.csv"));
 			while ((line=bufferedReader.readLine()) != null) {
 				String[] data = line.split(",");
 				BookEntity bookEntity = new BookEntity();
 				bookEntity.setAuthor(data[1].replaceAll("'", ""));
 				bookEntity.setName(data[2].replaceAll("'", ""));
-				bookEntity.setQuantity(data[3]);
+				bookEntity.setQuantity(Integer.parseInt(data[3]));
 				bookEntity.setImg(data[4]);
-				bookEntity.setPrice(data[5]);
-				IntStream.range(9, data.length - 1).forEach(column -> data[8] += "," + data[column]);
+				bookEntity.setPrice(Integer.parseInt(data[5]));
+				IntStream.range(7, data.length - 1).forEach(column -> data[6] += "," + data[column]);
 				bookEntity.setDescription(data[6]);
-				bookEntity.setMarkedPrice(data[7]);
-				bookEntity.setRating(data[8]);
 				bookRepository.save(bookEntity);
 			}
 		} catch (IOException e) {
@@ -70,6 +68,4 @@ public class BookService {
 		}
 		return "Added";
 	}
-
-
 }

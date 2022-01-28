@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.bookstore.app.dto.CartDto;
@@ -36,11 +37,12 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int cartId;
 	private int quantity;
-	
-	@CreatedDate
+
+	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
 	private Date registerDate;
-	
+
+	@CreationTimestamp
 	@JsonFormat(pattern="dd MM yyyy")
 	private LocalDate updatedDate;
 	
